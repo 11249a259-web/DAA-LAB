@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<limits.h>
+#define MAX 10
+#define INF INT_MAX
+int d[MAX][MAX};
+int dp[MAX][MAX];
+int n;
+int g(int i,int s}{
+if(s==0){
+reeturn d[i][0];
+}
+if d[i][s]!=-1)
+return dp[i][s];
+int mincost=INF;
+for(int k=0;k<n;k++){
+if(s&(1<<k)){
+int cost=d[i][k]+g(k,s&-(1<<k));
+if(cost<mincost)
+mincost=cost;
+}
+}
+return dp[i][s]=mincost;
+}
+int main(){
+int n,i,s=0;
+printf("enter the no of cities:");
+scanf("%d",&n);
+printf("please enter cost of cities:");
+for (int j=0;i<n;i++){
+for(int j=0;j<n;j++){
+scanf("%d",&d[i][j]);
+}
+}
+for(int i=0;i<n;i++){
+for(int s=0;s<(1<<n);s++){
+dp[i][s]=-1;}
+}
+g(i,s);
+for(int i=0;i<n;i++){
+s|=1<<i);
+int result=g(0,s);
+printf("s value is:%d\n",s);
+printf("minimun travelling cost:%d\n", result);
+}
